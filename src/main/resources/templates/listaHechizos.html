@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="${titulo}"></title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+</head>
+
+<body>
+	<h1 th:text="${titulo}"></h1>
+	<h2 th:text="'Via: '+ ${via}"></h2>
+	<br>
+	<br>
+	<br>
+	
+	<div th:each="hechizo: ${hechizos}">
+	<div style="border-bottom-style: solid; border-color: red; font-weight: bold; max-width: 35%"><span th:text="${hechizo.nombre}"></span></div>
+	<div><span style="padding-right: 60px" th:text="'Nivel: ' + ${hechizo.nivel}"></span>
+		 <span style="padding-right: 60px" th:text="'Accion: ' + ${hechizo.accion}"></span>
+		 <span style="padding-right: 60px" th:text="'Tipo: ' + ${hechizo.tipo}"></span>
+	</div>
+	<div style="max-width: 450px" th:text="${hechizo.descripcion}"></div>
+	<table>
+	<thead>
+		<tr>
+			<th style="padding-right: 30px">Grados</th>
+			<th style="padding-right: 30px" th:each="grado: ${hechizo.grados}" th:text="${grado}"></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="padding-right: 30px; font-weight: bold">Zeon:</td>
+			<td style="padding-right: 30px; text-align: center" th:each="zeon: ${hechizo.zeonr}" th:text="${zeon}"></td>
+		</tr>
+		<tr>
+			<td style="padding-right: 30px; font-weight: bold">Int R:</td>
+			<td style="padding-right: 30px; text-align: center" th:each="intr: ${hechizo.intr}" th:text="${intr}"></td>
+		</tr>
+	</tbody>
+	</table>
+	<div style="font-weight: bold" th:each="efecto: ${hechizo.efecto}" th:text="${efecto}"></div>
+	<span style="font-weight: bold" th:text="'Mantenimiento: '"></span><span th:text="${hechizo.mantenimiento}"></span>
+	<br>
+	<br>
+	</div>
+</body>
+</html>
